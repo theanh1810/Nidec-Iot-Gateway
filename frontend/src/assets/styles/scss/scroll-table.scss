@@ -1,0 +1,53 @@
+$padding: 10px;
+
+.ant-table-wrapper {
+	&.scroll-table {
+		padding: $padding;
+		height: 100%;
+
+		.ant-spin-nested-loading {
+			height: inherit;
+
+			.ant-spin-container {
+				height: inherit;
+				display: flex;
+				flex-direction: column;
+
+				.ant-table {
+					flex: 1;
+					display: flex;
+					flex-direction: column;
+					overflow: hidden;
+
+					.ant-table-container {
+						flex: 1;
+						display: flex;
+						flex-direction: column;
+						overflow: hidden;
+
+						.ant-table-body {
+							flex: 1;
+							&::-webkit-scrollbar {
+								width: 8px;
+								height: 8px;
+							}
+							&::-webkit-scrollbar-track {
+								background-color: #E3F4F4;
+								border-radius: 5px;
+							}
+							&::-webkit-scrollbar-thumb {
+								background-color: #C4DFDF;
+								border-radius: 5px;
+							}
+						}
+					}
+				}
+
+				.ant-pagination {
+					margin: 0;
+					padding-top: $padding;
+				}
+			}
+		}
+	}
+}

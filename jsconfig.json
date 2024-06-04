@@ -1,0 +1,39 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es6",
+        "baseUrl": "./",
+        "paths": {
+            "@controllers/*": ["./app/controllers/*"],
+            "@middlewares/*": ["./app/middlewares/*"],
+            "@models/*": ["./app/models/*"],
+            "@messages/*": ["./app/messages/*"],
+            "@helpers/*": ["./app/helpers/*"],
+            "@httpRequest/*": ["./app/httpRequest/*"],
+            "@services/*": ["./app/services/*"],
+            "@events/*": ["./app/events/*"],
+            "@business/*": ["./app/business/*"],
+            "@configs": ["./app/configs/app.config"],
+            "@socketIo": ["./server/io"],
+            "@socketClient": ["./server/socket-client"],
+            "@storage/*": ["./storage/*"],
+            "@providers/*": ["./app/providers/*"],
+            "@repositories/*": ["./app/repositories/*"],
+            "@@components/*": ["./frontend/src/components/*"],
+            "@@store/*": ["./frontend/src/store/*"],
+            "@@configs/*": ["./frontend/src/configs/*"],
+            "@@utils/*": ["./frontend/src/utils/*"],
+            "@@api/*": ["./frontend/src/api/*"],
+            "@@context/*": ["./frontend/src/context/*"],
+            "@@views/*": ["./frontend/src/views/*"],
+            "@@images/*": ["./frontend/src/assets/images/*"],
+            "@@styles/*": ["./frontend/src/assets/styles/*"],
+            "@@lang": ["./frontend/src/lang/useTranslate"],
+            "@@socket": ["./frontend/src/socket/useSocket"]
+        }
+    },
+    "exclude": [
+        "node_modules",
+        "**/node_modules/*"
+    ]
+}

@@ -1,0 +1,17 @@
+.antd-custom-input {
+    border: none;
+    background-color: #646669;
+    input {
+        margin-left: 10px;
+        background-color: #646669;
+        color: #d1d0c5;
+        &::placeholder {
+            color: #8a8984;
+        }
+    }
+    .ant-input-suffix {
+        svg {
+            color: #d1d0c5;
+        }
+    }
+}

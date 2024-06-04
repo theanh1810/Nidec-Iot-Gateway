@@ -1,0 +1,63 @@
+{
+  "name": "nidec-iot-gateway",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --inspect index.js",
+    "prod": "pm2 start ecosystem.config.js",
+    "stop": "pm2 stop all",
+    "list": "pm2 ls",
+    "help": "pm2 --help",
+    "monitor": "pm2 monit",
+    "reset": "pm2 reset all"
+  },
+  "author": "Vu Toan Trung",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cron": "^2.4.3",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "inquirer": "^8.2.5",
+    "jsonwebtoken": "^9.0.2",
+    "module-alias": "^2.2.3",
+    "moment": "^2.29.4",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "rotating-file-stream": "^3.1.1",
+    "sequelize": "^6.32.1",
+    "socket.io": "^4.7.2",
+    "socket.io-client": "^4.7.2",
+    "tedious": "^16.4.0",
+    "winston": "^3.10.0",
+    "winston-daily-rotate-file": "^4.7.1",
+    "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "_moduleAliases": {
+    "@controllers": "./app/controllers",
+    "@middlewares": "./app/middlewares",
+    "@models": "./app/models",
+    "@messages": "./app/messages",
+    "@helpers": "./app/helpers",
+    "@httpRequest": "./app/httpRequest",
+    "@services": "./app/services",
+    "@events": "./app/events",
+    "@business": "./app/business",
+    "@configs": "./app/configs/app.config",
+    "@socketIo": "./server/io",
+    "@socketClient": "./server/socket-client",
+    "@storage": "./storage",
+    "@providers": "./app/providers",
+    "@repositories": "./app/repositories"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "/test/**/*.js",
+      "/frontend/**/*.js"
+    ]
+  }
+}

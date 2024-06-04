@@ -1,0 +1,12 @@
+(async () => {
+    require('dotenv').config()
+    require('module-alias/register')
+    await require('@business/iot.business').reset()
+    require('./app/configs')
+    require('./memcache')
+    require('./router')
+    require('./router/channels')
+    require('./server/express').start()
+    require('@socketIo')
+    require('@socketClient')
+})()

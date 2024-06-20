@@ -14,6 +14,7 @@ const Model = Db.define('CommandProductionDetail', {
 	Process_ID: { type: BIGINT },
 	Quantity: { type: FLOAT },
 	Quantity_Production: { type: FLOAT },
+	Quantity_Production_Past: {type: FLOAT},
 	Count: { type: BIGINT },
 	Quantity_Error: { type: FLOAT },
 	Date: { type: DATEONLY },

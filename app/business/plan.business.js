@@ -11,7 +11,6 @@ const machineBusiness = require('@business/machine.business');
 async function startPlan(id, machine_id) {
   try {
     const plan = await CommandProductionDetail.findByPk(id);
-
     await CommandProductionDetail.update(
       {
         Status: 1,
@@ -71,19 +70,23 @@ async function startPlan(id, machine_id) {
 async function updateCount(plan_id, count){
   try{
     const plan = await CommandProductionDetail.findByPk(plan_id);
-    await CommandProductionDetail.update(
-      {
-        Count: count,
-        Quantity_Production: count * Number(plan.Cavity_Real),
-      },
-      {
-        where: {
-          ID: plan_id,
+    if(count > plan.Count){
+      await CommandProductionDetail.update(
+        {
+          Count: count,
+          Quantity_Production: Number(plan.Quantity_Production_Past) + count * Number(plan.Cavity_Real),
         },
-      }
-    );
+        {
+          where: {
+            ID: plan_id,
+          },
+        }
+      );
+    }
+    socketClient.emit('count-past', {
+      Count: plan.Count
+    });
   }catch (e) {
-    console.log('startPlan', e);
   }
 }
 
@@ -622,6 +625,7 @@ module.exports = {
     });
     if (!machine) return 'Machine not found';
     payload.machineID = machine.ID;
+    console.log(Count);
     await updateCount(Plan_Id, Count);
   },
 
@@ -722,6 +726,7 @@ module.exports = {
       await CommandProductionDetail.update(
         {
           Cavity_Real: Cavity_1,
+          Quantity_Production_Past: plan.Quantity_Production
         },
         {
           where: {
@@ -991,7 +996,7 @@ module.exports = {
     });
     setTimeout(()=>{
       // console.log('update-report-product-quality:', qualityData);
-      socket.emit('update-report-product-quality', qualityData);
+       socket.emit('update-report-product-quality', qualityData);
     }, 500);
   },
   async pause(socket, payload) {
